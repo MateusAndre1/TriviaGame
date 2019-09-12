@@ -31,12 +31,12 @@ function timeUp() {
     clearInterval(timer);
     wrong++;
     loadImages("lost");
-    setTimeout(nextQuestion, 3 * 1000);
+    setTimeout(nextQuestion, 6 * 1000);
 }
 
 function countDown() {
     counter--;
-    $("#time").html("Timer: " + counter);
+    $("#time").html("Time remaining: " + counter);
     if (counter === 0) {
         timeUp();
     }
@@ -47,11 +47,11 @@ function loadQuestion() {
     timer = setInterval(countDown, 1000);
     const question = quizQuestions[currentQuestion].question;
     const choices = quizQuestions[currentQuestion].choices;
-    $("#time").html("Timer: " + counter)
+    $("#time").html("Time remaining: " + counter)
     $("#game").html(`
     <h4>${question}</h4>
     <p>${listChoices(choices)}</p>
-    ${showRemainingQuestions()}
+    <p class="py-4">${showRemainingQuestions()}</p>
     `);
 }
 function listChoices(choices) {
@@ -71,13 +71,13 @@ $(document).on("click", ".choice", function () {
     if (correctAnswer === selectedAnswer) {
         score++;
         loadImages("win");
-        setTimeout(nextQuestion, 3 * 1000);
+        setTimeout(nextQuestion, 6 * 1000);
         // console.log("WINNER WINNER CHICKEN DINNER!");
     }
     else {
         wrong++;
         loadImages("wrong");
-        setTimeout(nextQuestion, 3 * 1000);
+        setTimeout(nextQuestion, 6 * 1000);
         // console.log("You'll get there");
     }
     // console.log(selectedAnswer);
@@ -122,14 +122,14 @@ function loadImages(status) {
         $("#game").html(`
         <p class="preload-image">Congratulations! You picked the correct answer!!</p>
         <p class="preload-image">The correct answer is ${correctAnswer}</p>
-        <img src="${randomImage(winImages)}" />
+        <img  class="py-4" src="${randomImage(winImages)}" />
         `);
     }
     else {
         $("#game").html(`
         <p class="preload-image">Awww Shucks the correct answer was ${correctAnswer}</p>
         <p class="preload-image">Better luck on the next one!</p>
-        <img src="${randomImage(wrongImages)}" />
+        <img  class="py-4" src="${randomImage(wrongImages)}" />
         `);
     }
 }
