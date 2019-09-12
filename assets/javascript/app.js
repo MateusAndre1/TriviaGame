@@ -109,6 +109,9 @@ function showRemainingQuestions() {
 
     return `Remaining Question: ${remianingQuestions}/${totalQuestion}`
 }
+function randomImage() {
+
+}
 function loadImages(status) {
     var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
 
@@ -116,14 +119,20 @@ function loadImages(status) {
         $("#game").html(`
         <p class="preload-image">Congratulations! You picked the correct answer!!</p>
         <p class="preload-image">The correct answer is ${correctAnswer}</p>
+        <img src=""/>
         `);
     }
     else {
         $("#game").html(`
         <p class="preload-image">Awww Shucks the correct answer was ${correctAnswer}</p>
         <p class="preload-image">Better luck on the next one!</p>
+        <img src=""/>
         `);
     }
 }
 
-loadQuestion();
+$("#start").click(function() {
+    $("#start").remove();
+    $("#time").html(counter);
+    loadQuestion();
+});
