@@ -68,18 +68,18 @@ $(document).on("click", ".choice", function () {
     var selectedAnswer = $(this).attr("data-answer");
     var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
 
-if (correctAnswer === selectedAnswer) {
-    score++;
-    loadImages("win");
-    setTimeout(nextQuestion, 3 * 1000);
-    // console.log("WINNER WINNER CHICKEN DINNER!");
-}
-else {
-    wrong++;
-    loadImages("wrong");
-    setTimeout(nextQuestion, 3 * 1000);
-    // console.log("You'll get there");
-}
+    if (correctAnswer === selectedAnswer) {
+        score++;
+        loadImages("win");
+        setTimeout(nextQuestion, 3 * 1000);
+        // console.log("WINNER WINNER CHICKEN DINNER!");
+    }
+    else {
+        wrong++;
+        loadImages("wrong");
+        setTimeout(nextQuestion, 3 * 1000);
+        // console.log("You'll get there");
+    }
     // console.log(selectedAnswer);
 });
 
@@ -92,15 +92,15 @@ function showResult() {
     `;
     $("#game").html(result);
 }
-$(document).on("click", "#reset", function() {
-     counter = 5;
-     currentQuestion = 0;
-     score = 0;
-     wrong = 0;
-     timer = null;
+$(document).on("click", "#reset", function () {
+    counter = 30;
+    currentQuestion = 0;
+    score = 0;
+    wrong = 0;
+    timer = null;
 
     loadQuestion();
-//  console.log("test");
+    //  console.log("test");
 });
 
 function showRemainingQuestions() {
@@ -111,15 +111,17 @@ function showRemainingQuestions() {
 }
 function loadImages(status) {
     var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
-    
+
     if (status === "win") {
-        $("#game").html;(`
+        $("#game").html(`
         <p class="preload-image">Congratulations! You picked the correct answer!!</p>
+        <p class="preload-image">The correct answer is ${correctAnswer}</p>
         `);
     }
     else {
-        $("#game").html;(`
+        $("#game").html(`
         <p class="preload-image">Awww Shucks the correct answer was ${correctAnswer}</p>
+        <p class="preload-image">Better luck on the next one!</p>
         `);
     }
 }
