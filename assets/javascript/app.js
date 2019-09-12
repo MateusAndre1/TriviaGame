@@ -9,7 +9,7 @@
 // Have a restart button after questions are complete
 
 var counter = 30;
-var currentQuestion = 0;
+var currentQuestion = 4;
 var score = 0;
 var wrong = 0;
 var timer;
@@ -19,7 +19,17 @@ function loadQuestion () {
     const question = quizQuestions[currentQuestion].question;
     const choices = quizQuestions[currentQuestion].choices;
     $("#time").html("Timer: " + counter)
-    $("#game").html("<h4>" + question + "<h4>");
-
+    $("#game").html(`
+    <h4>${question}</h4>
+    <p>${listChoices(choices)}</p>
+    `);
+}
+function listChoices(choices) {
+    var result = "";
+    for (let i = 0; i < choices.length; i++) {
+        result += `<p class="choice" data-answer="${choices[i]}">${choices[i]}</p>`
+        
+    }
+    return result;
 }
 loadQuestion();
