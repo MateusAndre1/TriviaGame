@@ -46,9 +46,12 @@ const quizQuestions = [
     }
 ];
 
-// const winImages = [
-
-// ];
-// const  wrongImages = [
-
-// ]
+const winImages = [
+    "./assets/images/correct.gif",
+    "./assets/images/correct2.gif"
+];
+const  wrongImages = [
+    "./assets/images/wrong2.gif",
+    "./assets/images/wrong3.gif"
+    
+];

@@ -109,7 +109,10 @@ function showRemainingQuestions() {
 
     return `Remaining Question: ${remianingQuestions}/${totalQuestion}`
 }
-function randomImage() {
+function randomImage(images) {
+    var random = Math.floor(Math.random() * images.length);
+    var randomImage = images[random];
+    return randomImage;
 
 }
 function loadImages(status) {
@@ -119,14 +122,14 @@ function loadImages(status) {
         $("#game").html(`
         <p class="preload-image">Congratulations! You picked the correct answer!!</p>
         <p class="preload-image">The correct answer is ${correctAnswer}</p>
-        <img src=""/>
+        <img src="${randomImage(winImages)}" />
         `);
     }
     else {
         $("#game").html(`
         <p class="preload-image">Awww Shucks the correct answer was ${correctAnswer}</p>
         <p class="preload-image">Better luck on the next one!</p>
-        <img src=""/>
+        <img src="${randomImage(wrongImages)}" />
         `);
     }
 }
