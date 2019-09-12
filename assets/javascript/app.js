@@ -14,8 +14,23 @@ var score = 0;
 var wrong = 0;
 var timer;
 
-function timeUp () {
+function nextQuestion() {
+    var questionsComplete = (quizQuestions.length - 1) === currentQuestion;
+    if (questionsComplete) {
+
+        // console.log("Game over!!!");
+    }
+    else {
+        currentQuestion++;
+        loadQuestion();
+    }
+
+}
+
+function timeUp() {
     clearInterval(timer);
+    wrong++;
+    nextQuestion();
 }
 
 function countDown() {
@@ -26,7 +41,7 @@ function countDown() {
     }
 }
 
-function loadQuestion () {
+function loadQuestion() {
     counter = 5;
     timer = setInterval(countDown, 1000);
     const question = quizQuestions[currentQuestion].question;
@@ -41,8 +56,26 @@ function listChoices(choices) {
     var result = "";
     for (let i = 0; i < choices.length; i++) {
         result += `<p class="choice" data-answer="${choices[i]}">${choices[i]}</p>`
-        
+
     }
     return result;
 }
 loadQuestion();
+
+$(document).on("click", ".choice", function () {
+    clearInterval(timer);
+    var selectedAnswer = $(this).attr("data-answer");
+    var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
+
+if (correctAnswer === selectedAnswer) {
+    score++;
+    nextQuestion();
+    // console.log("WINNER WINNER CHICKEN DINNER!");
+}
+else {
+    wrong++;
+    nextQuestion();
+    console.log("You'll get there");
+}
+    // console.log(selectedAnswer);
+});

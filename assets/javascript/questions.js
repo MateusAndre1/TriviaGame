@@ -1,7 +1,7 @@
 const quizQuestions = [
     {
         question: "jQuery is a?",
-        choices: ["JavaScript Libray", "JavaScript Language", "JavaScript Method", "None of the Above"],
+        choices: ["JavaScript Library", "JavaScript Language", "JavaScript Method", "None of the Above"],
         correctAnswer: "JavaScript Library"
     },
     {
