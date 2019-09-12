@@ -17,7 +17,7 @@ var timer;
 function nextQuestion() {
     var questionsComplete = (quizQuestions.length - 1) === currentQuestion;
     if (questionsComplete) {
-
+        showResult();
         // console.log("Game over!!!");
     }
     else {
@@ -60,7 +60,6 @@ function listChoices(choices) {
     }
     return result;
 }
-loadQuestion();
 
 $(document).on("click", ".choice", function () {
     clearInterval(timer);
@@ -75,7 +74,29 @@ if (correctAnswer === selectedAnswer) {
 else {
     wrong++;
     nextQuestion();
-    console.log("You'll get there");
+    // console.log("You'll get there");
 }
     // console.log(selectedAnswer);
 });
+
+function showResult() {
+    var result = `
+    <p>You got ${score} question's correct</p>
+    <p>You missed ${wrong} question's</p>
+    <p>Total question's ${quizQuestions.length}</p>
+    <button class="btn btn-success" id="reset">Reset Game</button>
+    `;
+    $("#game").html(result);
+}
+$(document).on("click", "#reset", function() {
+     counter = 5;
+     currentQuestion = 0;
+     score = 0;
+     wrong = 0;
+     timer = null;
+
+    loadQuestion();
+//  console.log("test");
+});
+
+loadQuestion();
