@@ -8,3 +8,18 @@
 // Show how many correct out of the total
 // Have a restart button after questions are complete
 
+var counter = 30;
+var currentQuestion = 0;
+var score = 0;
+var wrong = 0;
+var timer;
+
+function loadQuestion () {
+
+    const question = quizQuestions[currentQuestion].question;
+    const choices = quizQuestions[currentQuestion].choices;
+    $("#time").html("Timer: " + counter)
+    $("#game").html("<h4>" + question + "<h4>");
+
+}
+loadQuestion();
