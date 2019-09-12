@@ -8,7 +8,7 @@
 // Show how many correct out of the total
 // Have a restart button after questions are complete
 
-var counter = 5;
+var counter = 30;
 var currentQuestion = 0;
 var score = 0;
 var wrong = 0;
@@ -30,7 +30,8 @@ function nextQuestion() {
 function timeUp() {
     clearInterval(timer);
     wrong++;
-    nextQuestion();
+    loadImages("lost");
+    setTimeout(nextQuestion, 3 * 1000);
 }
 
 function countDown() {
@@ -42,7 +43,7 @@ function countDown() {
 }
 
 function loadQuestion() {
-    counter = 5;
+    counter = 30;
     timer = setInterval(countDown, 1000);
     const question = quizQuestions[currentQuestion].question;
     const choices = quizQuestions[currentQuestion].choices;
@@ -50,6 +51,7 @@ function loadQuestion() {
     $("#game").html(`
     <h4>${question}</h4>
     <p>${listChoices(choices)}</p>
+    ${showRemainingQuestions()}
     `);
 }
 function listChoices(choices) {
@@ -68,12 +70,14 @@ $(document).on("click", ".choice", function () {
 
 if (correctAnswer === selectedAnswer) {
     score++;
-    nextQuestion();
+    loadImages("win");
+    setTimeout(nextQuestion, 3 * 1000);
     // console.log("WINNER WINNER CHICKEN DINNER!");
 }
 else {
     wrong++;
-    nextQuestion();
+    loadImages("wrong");
+    setTimeout(nextQuestion, 3 * 1000);
     // console.log("You'll get there");
 }
     // console.log(selectedAnswer);
@@ -98,5 +102,26 @@ $(document).on("click", "#reset", function() {
     loadQuestion();
 //  console.log("test");
 });
+
+function showRemainingQuestions() {
+    var remianingQuestions = quizQuestions.length - (currentQuestion + 1);
+    var totalQuestion = quizQuestions.length;
+
+    return `Remaining Question: ${remianingQuestions}/${totalQuestion}`
+}
+function loadImages(status) {
+    var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
+    
+    if (status === "win") {
+        $("#game").html;(`
+        <p class="preload-image">Congratulations! You picked the correct answer!!</p>
+        `);
+    }
+    else {
+        $("#game").html;(`
+        <p class="preload-image">Awww Shucks the correct answer was ${correctAnswer}</p>
+        `);
+    }
+}
 
 loadQuestion();

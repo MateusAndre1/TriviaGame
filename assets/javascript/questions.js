@@ -45,3 +45,10 @@ const quizQuestions = [
         correctAnswer: "All of the Above"
     }
 ];
+
+// const winImages = [
+
+// ];
+// const  wrongImages = [
+
+// ]
