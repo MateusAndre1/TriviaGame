@@ -97,7 +97,7 @@ $(document).on("click", ".choice", function () {
     // console.log(selectedAnswer);
 });
 
-// display results during the interval between questions
+// display results at the end of the game
 
 function showResult() {
     var result = `
