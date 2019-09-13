@@ -1,3 +1,4 @@
+// this is where i will store global variables i dont want to change
 const quizQuestions = [
     {
         question: "jQuery is a?",
