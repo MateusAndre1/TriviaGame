@@ -1,18 +1,16 @@
-# TriviaGame
+# jQuery inspired Trivia Game!
 
-### Option Two: Advanced Assignment (Timed Questions)
+## Are you ready to take a short trivia styled game on jQuery??
 
-![Advanced](Images/2-advanced.jpg)
+* In this trivia game you will be able to answer questions revovling around jQuery.
+* There is a limit of 30 seconds for each question, so dont take toooo long!
+* After every answer, you will be greeted with a giphy letting you know if you were right or wrong.
 
-**[Click Here to Watch the demo](https://youtu.be/xhmmiRmxQ8Q)**.
+## How its programmed
 
-* You'll create a trivia game that shows only one question until the player answers it or their time runs out.
+* Variables defining timer, correct and wrong counts.
+* Using setTimeout function to countdown question timer as well as the time inbetween
 
-* If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
+## Start the game and see how well you know it! 
+[Trivia Time!](https://mateusandre1.github.io/TriviaGame/)
 
-* The scenario is similar for wrong answers and time-outs.
-
-  * If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question.
-  * If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
-
-* On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
